@@ -8,7 +8,11 @@ function My_First_Function() {
     document.getElementById("Green_Text").innerHTML = result;
 }
 
-3+3 // Writing an expression. Not sure what the point is.
+function Second_Function() {
+    var keyPress = "You pressed a key! Good job!!";
+    document.getElementById("Press_Key").style.backgroundColor = "red";
+}
+
 
 var greet="Hello ", person="Jeff"; // Declare and assign variables.
 greet = greet.fontcolor("blue");
@@ -19,5 +23,5 @@ document.write(greet + person);
 warning = "Enter at your own risk!";
 window.alert(warning);
 
-document.write(2+2); // Writing an expression. Not sure what the point is.
+document.write(2+2); // Writing an expression. 
 
