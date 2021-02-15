@@ -16,3 +16,5 @@ function Age_Test() {
     Can_vote = (Age < 18) ? "You are too young":"You are old enough";
     document.getElementById("Vote").innerHTML = Can_vote + " to vote.";
 }
+
+document.title = "Title Changed with JavaScript";
