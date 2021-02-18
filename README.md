@@ -24,3 +24,5 @@ Adds, subtracts, multiplies and divides. Includes 'All Clear' button.
 Several small practice programs which execute various capabilities of JavaScript. 
 Includes examples using JQuery and AJAX, etc.
 
+
+
