@@ -2,8 +2,11 @@
 These are some pages I made while first learning JavaScript.
 
 ## Projects
-* Practice and Learning Pages
+* Tic Tac Toe
+* Pizza Menu
+* 
+* Basic JavaScript Projects
 
-### Practice and Learning Pages
-The rest are numberous small practice programs. 
+### Basic JavaScript Projects
+Several small practice programs which execute various capabilities of JavaScript. 
 
