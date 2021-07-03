@@ -5,6 +5,9 @@ let activePlayer = 'X';
 // Stores an array o moves. Will use to determine win conditions.
 let selectedSquares = [];
 
+// Tracks which player wins. 
+let win = "";
+
 // This function is for placing an x or o in a square.
 function placeXOro(squareNumber) {
     // This condition assures a square hasn't been selected already.
@@ -26,6 +29,7 @@ function placeXOro(squareNumber) {
         // squareNumber and activePlayer are concatenated together and added to the array.
         selectedSquares.push(squareNumber + activePlayer);
         // This calls a function to check for any win conditions.
+        
         checkWinConditions();
         // This condition is for changing the active player.
         if (activePlayer === 'X') {
@@ -57,7 +61,7 @@ function placeXOro(squareNumber) {
     function computersTurn() {
         // This boolean is needed for our while loop.
         let success = false;
-        // This variable stores a randome number 0-8
+        // This variable stores a random number 0-8
         let pickASquare;
         // This condition allows our while loop to keep trying if square already selected.
         while(!success) {
@@ -65,9 +69,9 @@ function placeXOro(squareNumber) {
             pickASquare = String(Math.floor(Math.random()*9));
             // If the random number evaluates returns true, the square hasn't been selected yet.
             if (placeXOro(pickASquare)) {
-                // This line call teh function.
+                // This line call the function.
                 placeXOro(pickASquare);
-                // This changs our boolean and ends the loop.
+                // This changes our boolean and ends the loop.
                 success = true;
             }
         }
@@ -78,51 +82,51 @@ function placeXOro(squareNumber) {
 // Checking to see if there is a win or full grid after every turn.
 function checkWinConditions() {
     // X 012 condition
-    if (arrayIncludes('0X', '1X', '2X')) { drawWinLine(50, 100, 558, 100);}
+    if (arrayIncludes('0X', '1X', '2X')) {  win = "yes"; drawWinLine(50, 100, 558, 100);}
     // X 345 condition
-    else if (arrayIncludes('3X', '4X', '5X')) { drawWinLine(50, 304, 558, 304);}
+    else if (arrayIncludes('3X', '4X', '5X')) { win = "yes"; drawWinLine(50, 304, 558, 304);}
     // X 678 condition
-    else if (arrayIncludes('6X', '7X', '8X')) { drawWinLine(50, 508, 558, 508);}
+    else if (arrayIncludes('6X', '7X', '8X')) { win = "yes"; drawWinLine(50, 508, 558, 508);}
     // X 036 condition
-    else if (arrayIncludes('0X', '3X', '6X')) { drawWinLine(100, 50, 100, 558);}
+    else if (arrayIncludes('0X', '3X', '6X')) { win = "yes"; drawWinLine(100, 50, 100, 558);}
     // X 147 condition
-    else if (arrayIncludes('1X', '4X', '7X')) { drawWinLine(304, 50, 304, 558);}
+    else if (arrayIncludes('1X', '4X', '7X')) { win = "yes"; drawWinLine(304, 50, 304, 558);}
     // X 258 condition
-    else if (arrayIncludes('2X', '5X', '8X')) { drawWinLine(508, 50, 508, 558);}
+    else if (arrayIncludes('2X', '5X', '8X')) { win = "yes"; drawWinLine(508, 50, 508, 558);}
     // X 642 condition
-    else if (arrayIncludes('6X', '4X', '2X')) { drawWinLine(100, 508, 510, 90);}
+    else if (arrayIncludes('6X', '4X', '2X')) { win = "yes"; drawWinLine(100, 508, 510, 90);}
     // X 048 condition
-    else if (arrayIncludes('0X', '4X', '8X')) { drawWinLine(100, 100, 520, 520);}
+    else if (arrayIncludes('0X', '4X', '8X')) { win = "yes"; drawWinLine(100, 100, 520, 520);}
     // O 012 condition
-    else if (arrayIncludes('0O', '1O', '2O')) { drawWinLine(50, 100, 558, 100);}
+    else if (arrayIncludes('0O', '1O', '2O')) { win = "no"; drawWinLine(50, 100, 558, 100);}
     // O 345 condition
-    else if (arrayIncludes('3O', '4O', '5O')) { drawWinLine(50, 304, 558, 304);}
+    else if (arrayIncludes('3O', '4O', '5O')) { win = "no"; drawWinLine(50, 304, 558, 304);}
     // O 678 condition
-    else if (arrayIncludes('6O', '7O', '8O')) { drawWinLine(50, 508, 558, 508);}
+    else if (arrayIncludes('6O', '7O', '8O')) { win = "no"; drawWinLine(50, 508, 558, 508);}
     // O 036 condition
-    else if (arrayIncludes('0O', '3O', '6O')) { drawWinLine(100, 50, 100, 558);}
+    else if (arrayIncludes('0O', '3O', '6O')) { win = "no"; drawWinLine(100, 50, 100, 558);}
     // O 147 condition
-    else if (arrayIncludes('1O', '4O', '7O')) { drawWinLine(304, 50, 304, 558);}
+    else if (arrayIncludes('1O', '4O', '7O')) { win = "no"; drawWinLine(304, 50, 304, 558);}
     // O 258 condition
-    else if (arrayIncludes('2O', '5O', '8O')) { drawWinLine(508, 50, 508, 558);}
+    else if (arrayIncludes('2O', '5O', '8O')) { win = "no"; drawWinLine(508, 50, 508, 558);}
     // O 642 condition
-    else if (arrayIncludes('6O', '4O', '2O')) { drawWinLine(100, 508, 510, 90);}
+    else if (arrayIncludes('6O', '4O', '2O')) { win = "no"; drawWinLine(100, 508, 510, 90);}
     // O 048 condition
-    else if (arrayIncludes('0O', '4O', '8O')) { drawWinLine(100, 100, 520, 520);}
+    else if (arrayIncludes('0O', '4O', '8O')) { win = "no"; drawWinLine(100, 100, 520, 520);}
 
     // This condition checks for a tie. If none of the above conditions register and 9 squares are selected, the code executes.
     else if (selectedSquares.length >= 9) {
         // This function plays the tie game sound.
         audio('./media/tie.mp3');
-        // This funciton sets a 1 second timer before the resetGame is called.
-        setTimeout(function () { resetGame(); }, 1000);
+        // This funciton sets a 3 second timer before the resetGame is called.
+        setTimeout(function () { resetGame(); }, 3000);
     }
 }
 
 // This function checks if an array includes 3 strings.
 // It is used to check for each win condition.
 function arrayIncludes(squareA, squareB, squareC) {
-    // The next 3 variables will be sued to check for 3 in a row.
+    // The next 3 variables will be used to check for 3 in a row.
     const a = selectedSquares.includes(squareA) ;
     const b = selectedSquares.includes(squareB) ;
     const c = selectedSquares.includes(squareC) ;
@@ -214,16 +218,27 @@ function drawWinLine(coordX1, coordY1, coordX2, coordY2) {
         cancelAnimationFrame(animationLoop) ;
     }
 
-    // This line disallows clicking while the win sound is playing.
-    disableClick();
-    // This line plays the win sounds.
-    audio('./media/winGame.mp3') ;
+
     // This line calls main animation loop.
     animateLineDrawing();
+    // This line plays the win or lose sounds.
+
+    // This line disallows clicking while the win sound is playing.
+    disableClick();
+    
+    console.log(win)
+    
+    if (win == "yes"){
+        audio('./media/winGame.mp3') ;
+        win = "" ;
+    }
+    else if (win == "no"){
+        audio('./media/lose.mp3') ; 
+        win = "" ;
+    }
     // This line waits 1s then clears canvas, resets game, and reallows clicking.
     setTimeout(function () { clear(); resetGame(); }, 1000);
 }
-
 
 
 // This function resets the game in a tie or a win.
